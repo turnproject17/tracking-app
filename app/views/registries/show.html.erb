@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td><%= @registry.name%></td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td><%= @registry.location%></td>
+  </tr>
+  
+</table>
+
+<h3>Coordinators</h3>
+<%-if  @registry.coordinators.present?%>
+<table>
+  <th>email</th>
+  <th>name</th>
+  <th>phone_number</th>
+  <%- @registry.coordinators.each do |coordinator|%>
+    <tr>
+      <td><%= coordinator.email%></td>
+      <td><%= coordinator.name%></td>
+      <td><%= coordinator.phone_number%></td>
+    </tr>
+  <% end -%>
+<% end -%>
+</table>
+<%= link_to 'Edit', edit_registry_path(@registry) %> |
+<%= link_to 'Back', registries_path %>

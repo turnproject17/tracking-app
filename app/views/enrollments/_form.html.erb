@@ -1,0 +1,29 @@
+<%= form_with(model: [@coordinator, enrollment], local: true) do |form| %>
+  <% if enrollment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
+
+      <ul>
+        <% enrollment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :participant_name %>
+  <%= form.select :participant_id, options_for_select(Participant.pluck(:name, :id), selected: form.object.participant_id), {prompt: "select"}, {} %>
+
+  <%= form.label :registry %>
+  <%= form.select :registry_id, options_for_select(Registry.pluck(:name, :id), selected: form.object.registry_id), {prompt: "select"}, {} %>
+
+  <%= form.label :method_of_contact %>
+  <%= form.select :method_of_contact, options_for_select(Enrollment.method_of_contacts.keys, selected: form.object.method_of_contact), {prompt: "select"}, {} %>
+
+  <%= form.label :remark %>
+  <%= form.text_area :remark%>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

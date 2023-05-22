@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Enrollments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Participant</th>
+      <th>Registry</th>
+      <th>Method of contact</th>
+      <th>Remark</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <tr>
+        <td><%= enrollment.participant&.name %></td>
+        <td><%= enrollment.registry&.name %></td>
+        <td><%= enrollment.method_of_contact %></td>
+        <td><%= enrollment.remarks %></td>
+        <td><%= link_to 'Show', coordinator_enrollment_path(@coordinator, enrollment) %></td>
+        <td><%= link_to 'Edit', edit_coordinator_enrollment_path(@coordinator, enrollment) %></td>
+        <td><%= link_to 'Destroy', [@coordinator, enrollment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Enrollment', new_coordinator_enrollment_path(@coordinator) %>
+<%= link_to 'Back', coordinator_path(@coordinator) %>

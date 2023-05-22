@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <td>Participant name</td>
+    <td><%= @enrollment.participant&.name%></td>
+  </tr>
+  <tr>
+    <td>Registry</td>
+    <td><%= @enrollment.registry&.name%></td>
+  </tr>
+  <tr>
+    <td>Method of Contact</td>
+    <td><%= @enrollment.method_of_contact%></td>
+  </tr>
+  <tr>
+    <td>Enrolled at</td>
+    <td><%= @enrollment.created_at%></td>
+  </tr>
+  <tr>
+    <td>Remarks</td>
+    <td><%= @enrollment.remarks%></td>
+  </tr>
+</table>
+
+
+</table>
+<%= link_to 'Edit', edit_coordinator_enrollment_path(@coordinator, @enrollment) %> |
+<%= link_to 'Back', coordinator_enrollments_path(@coordinator) %>

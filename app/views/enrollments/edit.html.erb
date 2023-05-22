@@ -1,0 +1,6 @@
+<h1>Editing Enrollment</h1>
+
+<%= render 'form', enrollment: @enrollment %>
+
+<%= link_to 'Show', [@coordinator, @enrollment] %> |
+<%= link_to 'Back', coordinator_enrollments_path(@coordinator) %>
